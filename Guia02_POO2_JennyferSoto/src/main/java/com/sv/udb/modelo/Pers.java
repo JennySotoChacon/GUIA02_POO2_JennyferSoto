@@ -15,6 +15,7 @@ public class Pers {
     private int codi_pers;
     private String nomb_pers;
     private String apel_pers;
+    private Blob foto_pers;
     private tipo_pers codi_tipo_pers;
     private String gene_pers;
     private String fech_naci_pers;
@@ -24,15 +25,16 @@ public class Pers {
     private ubic_geof codi_ubic_geof;
     private String fech_alta;
     private String fech_baja;
-    private Blob esta;
+    private int esta;
 
     public Pers() {
     }
 
-    public Pers(int codi_pers, String nomb_pers, String apel_pers, tipo_pers codi_tipo_pers, String gene_pers, String fech_naci_pers, String dui_pers, String nit_pers, String tipo_sang_pers, ubic_geof codi_ubic_geof, String fech_alta, String fech_baja, Blob esta) {
+    public Pers(int codi_pers, String nomb_pers, String apel_pers, Blob foto_pers, tipo_pers codi_tipo_pers, String gene_pers, String fech_naci_pers, String dui_pers, String nit_pers, String tipo_sang_pers, ubic_geof codi_ubic_geof, String fech_alta, String fech_baja, int esta) {
         this.codi_pers = codi_pers;
         this.nomb_pers = nomb_pers;
         this.apel_pers = apel_pers;
+        this.foto_pers = foto_pers;
         this.codi_tipo_pers = codi_tipo_pers;
         this.gene_pers = gene_pers;
         this.fech_naci_pers = fech_naci_pers;
@@ -67,6 +69,14 @@ public class Pers {
 
     public void setApel_pers(String apel_pers) {
         this.apel_pers = apel_pers;
+    }
+
+    public Blob getFoto_pers() {
+        return foto_pers;
+    }
+
+    public void setFoto_pers(Blob foto_pers) {
+        this.foto_pers = foto_pers;
     }
 
     public tipo_pers getCodi_tipo_pers() {
@@ -141,11 +151,11 @@ public class Pers {
         this.fech_baja = fech_baja;
     }
 
-    public Blob getEsta() {
+    public int getEsta() {
         return esta;
     }
 
-    public void setEsta(Blob esta) {
+    public void setEsta(int esta) {
         this.esta = esta;
     }
 
@@ -153,4 +163,6 @@ public class Pers {
     public String toString() {
         return nomb_pers;
     }
+    
+    
 }

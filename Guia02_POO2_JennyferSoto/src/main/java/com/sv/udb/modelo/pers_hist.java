@@ -14,20 +14,22 @@ public class pers_hist {
     private Pers codi_pers;
     private String nomb_pers;
     private String apel_pers;
+    private Blob foto_pers;
     private tipo_pers codi_tipo_pers;
     private ubic_geof codi_ubic_geof;
     private String fech_alta;
     private String fech_baja;
-    private Blob esta;
+    private int esta;
 
     public pers_hist() {
     }
 
-    public pers_hist(int codi_pers_hist, Pers codi_pers, String nomb_pers, String apel_pers, tipo_pers codi_tipo_pers, ubic_geof codi_ubic_geof, String fech_alta, String fech_baja, Blob esta) {
+    public pers_hist(int codi_pers_hist, Pers codi_pers, String nomb_pers, String apel_pers, Blob foto_pers, tipo_pers codi_tipo_pers, ubic_geof codi_ubic_geof, String fech_alta, String fech_baja, int esta) {
         this.codi_pers_hist = codi_pers_hist;
         this.codi_pers = codi_pers;
         this.nomb_pers = nomb_pers;
         this.apel_pers = apel_pers;
+        this.foto_pers = foto_pers;
         this.codi_tipo_pers = codi_tipo_pers;
         this.codi_ubic_geof = codi_ubic_geof;
         this.fech_alta = fech_alta;
@@ -67,6 +69,14 @@ public class pers_hist {
         this.apel_pers = apel_pers;
     }
 
+    public Blob getFoto_pers() {
+        return foto_pers;
+    }
+
+    public void setFoto_pers(Blob foto_pers) {
+        this.foto_pers = foto_pers;
+    }
+
     public tipo_pers getCodi_tipo_pers() {
         return codi_tipo_pers;
     }
@@ -99,11 +109,11 @@ public class pers_hist {
         this.fech_baja = fech_baja;
     }
 
-    public Blob getEsta() {
+    public int getEsta() {
         return esta;
     }
 
-    public void setEsta(Blob esta) {
+    public void setEsta(int esta) {
         this.esta = esta;
     }
 

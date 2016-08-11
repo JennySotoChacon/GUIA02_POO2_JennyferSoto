@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  *
- * @author aerc
+ * @author Owner
  */
 public class UsuaCtrl {
     public List<usua> consTodo()
@@ -34,7 +34,11 @@ public class UsuaCtrl {
             ResultSet rs = cmd.executeQuery();
             while(rs.next())
             {
-                    resp.add(new usua(rs.getInt(1), new Pers(rs.getInt(2), rs.getString(10), rs.getString(11), new tipo_pers(rs.getInt(12), null, null, null, null), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), new ubic_geof(rs.getInt(18), null, 0, null, null, null), rs.getString(19), rs.getString(20), rs.getBlob(21)), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getBlob(8)));
+                    resp.add(new usua(rs.getInt(1), new Pers(rs.getInt(2), rs.getString(10), rs.getString(11),rs.getBlob(12),
+                            new tipo_pers(rs.getInt(12), null, null, null, null), 
+                            rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17),
+                            new ubic_geof(rs.getInt(18), null, 0, null, null, null), rs.getString(19), rs.getString(20),
+                            rs.getInt(21)), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getBlob(8)));
             }
         }
         catch(Exception ex)
