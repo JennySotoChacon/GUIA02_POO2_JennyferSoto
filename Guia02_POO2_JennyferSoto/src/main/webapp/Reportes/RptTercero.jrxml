@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fbc35ad3-4d49-43d8-a39a-89714364cdd5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaInicio" class="java.lang.String"/>
+	<parameter name="fechaFin" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT unid_orga.`CODI_UNID_ORGA` AS unid_orga_CODI_UNID_ORGA, unid_orga.`NOMB_UNID_ORGA` AS unid_orga_NOMB_UNID_ORGA, visi.`FECH_HORA_ENTR_VISI` AS visi_FECH_HORA_ENTR_VISI, visi.`FECH_HORA_SALI_VISI` AS visi_FECH_HORA_SALI_VISI, visi.`MOTI_VISI` AS visi_MOTI_VISI FROM `unid_orga` unid_orga INNER JOIN `visi` visi ON unid_orga.`CODI_UNID_ORGA` = visi.`CODI_UNID_ORGA_VISI` WHERE CAST(visi.FECH_HORA_ENTR_VISI AS DATE) BETWEEN $P{fechaInicio} AND $P{fechaFin}]]>
+	</queryString>
+	<field name="unid_orga_CODI_UNID_ORGA" class="java.lang.Long"/>
+	<field name="unid_orga_NOMB_UNID_ORGA" class="java.lang.String"/>
+	<field name="visi_FECH_HORA_ENTR_VISI" class="java.sql.Timestamp"/>
+	<field name="visi_FECH_HORA_SALI_VISI" class="java.sql.Timestamp"/>
+	<field name="visi_MOTI_VISI" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="2250a245-f1a0-473c-9e9d-27a45e2296d2"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="d0cc3f4f-074f-4da7-bc96-23b09891b80b"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte 3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="8de2a3c5-ba70-4bcc-8930-b48321e8beba"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Visitas entre:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="353" y="72" width="100" height="20" uuid="f065688c-91d1-4fe7-832b-12220fb475d7"/>
+					<textFieldExpression><![CDATA[$P{fechaInicio}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="475" y="72" width="100" height="20" uuid="54c706ec-d8f6-43b7-af74-e2ea47a08613"/>
+					<textFieldExpression><![CDATA[$P{fechaFin}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="04f45eb2-bdf5-4b35-bfa7-501e86cb7dd6"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5e4c3f1d-f7de-45d1-8798-b678adf9049e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[# unidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f090f39a-b813-4f21-8f68-fae510fbc75c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e1c14150-cda2-471c-b5a5-0171bd3afaba"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="76412755-c531-463c-a512-eeb9ee2abd14"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d6e64ed9-5800-40ad-9369-1bca13af4ddd"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Motivo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="19e371cd-a31a-4928-912b-4d7784ad3278"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="111" height="20" uuid="0de27299-048c-40fa-b2b5-3a08b362f517"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unid_orga_CODI_UNID_ORGA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="111" y="0" width="111" height="20" uuid="846daf5f-5d91-4e11-96ec-970f28fa0114"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unid_orga_NOMB_UNID_ORGA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="222" y="0" width="111" height="20" uuid="788548cb-9de0-464a-9797-67bbc62aad24"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{visi_FECH_HORA_ENTR_VISI}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="333" y="0" width="111" height="20" uuid="cc93fe71-9b22-44d5-90b5-7e128f92435f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{visi_FECH_HORA_SALI_VISI}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="444" y="0" width="111" height="20" uuid="9301495f-c3ae-4f09-b23d-517846d5e35b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{visi_MOTI_VISI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="f77f7f74-1a3a-4ea6-bc15-e8be0f5155bf"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="6b8526ae-ddc0-415a-b6ba-96f80bea5ac5"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="f86d9873-38ac-4af2-8648-cecbd0a8ee6a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
