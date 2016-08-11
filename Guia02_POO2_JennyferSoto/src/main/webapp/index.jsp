@@ -1,23 +1,20 @@
 <%-- 
-    Document   : indexPrueba
-    Created on : 06-ago-2016, 21:48:14
+    Document   : guia2
+    Created on : 11-ago-2016, 9:49:08
     Author     : Owner
 --%>
-
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="com.sv.udb.controlador.Unid_orgaCtrl"%>
-<%@page import="com.sv.udb.modelo.unid_orga"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Guia 01-POO 2</title>
+    <title>Guia 02-POO 2</title>
     <link rel="stylesheet" href="css/reset.css">
         <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
@@ -26,8 +23,8 @@
   background: #e74c3c;
   color: white;
   margin: 25px auto;
-  width: 390px;
-  height: 360px;
+  width: 700px;
+  height: 1000px;
   position: relative;
   font-family: 'Roboto';
 }
@@ -102,11 +99,11 @@
 .flat-form form {
   padding-right: 20px !important;
 }
-.flat-form form input[type=date], .flat-form form select, .flat-form form input[type=submit] {
+.flat-form form input[type=date], .flat-form form select, .flat-form form input[type=submit], .flat-form form input[type=text] {
   font-family: 'Roboto';
   font-size: 20px;
 }
-.flat-form form input[type=date], .flat-form form select {
+.flat-form form input[type=date], .flat-form form select, .flat-form form input[type=text] {
   width: 100%;
   height: 40px;
   margin-bottom: 10px;
@@ -176,37 +173,114 @@ body {
     <div class="flat-form">
   <ul class="tabs">
     <li>
-      <a href="#login" class="active">Reporte1</a>
+      <a href="#login" class="active">Personas</a>
     </li>
     <li>
-      <a href="#register">Reporte2</a>
-    </li>
-    <li>
-      <a href="#reset">Reporte3</a>
+      <a href="#register">Historial de personas</a>
     </li>
   </ul>
   <div id="login" class="form-action show">
-    <h1>Reporte 1</h1>
-    <p>Todas las visitas de la unidad organizativa que elija</p>
-    <form id="reporte1" action="reporte1.jsp" method="post">
+    <h1>Personas</h1>
+    <form id="mantPers" action="PersonaServ" method="post" enctype="multipart/form-data">
       <ul>
         <li>
-          <label>Selecciona la unidad organizativa</label>
+          <label>Nombre:</label>
         </li>
         <li>
-          <select name="cmbUnidad">
-                        <jsp:useBean id="beanUnidCtrl" class="com.sv.udb.controlador.Unid_orgaCtrl" scope="page"/>
-                        <c:forEach items="${beanUnidCtrl.consTodo()}" var="fila">
-                            <c:choose>
-                                <c:when test="{fila.Codi_unid_orga eq cmbUnidad}">
-                                    <option name="codi_unid_orga" value="${fila.codi_unid_orga}" selected="">${fila.nomb_unid_orga}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option name="codi_unid_orga" value="${fila.codi_unid_orga}">${fila.nomb_unid_orga}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-         </select>
+            <input type="text" name="txtnomb_pers">
+        </li>
+        <li>
+          <label>Apellido:</label>
+        </li>
+        <li>
+            <input type="text" name="txtapel_pers">
+        </li>
+        <li>
+          <label>Foto:</label>
+        </li>
+        <li>
+            <input type="file" name="txtfoto_pers">
+        </li>
+        <li>
+          <label>Tipo:</label>
+        </li>
+        <li>
+            <select name="cmbTipo_pers">
+                <jsp:useBean id="beanTipo_pers" class="com.sv.udb.controlador.Tipo_persCtrl" scope="page"/>
+                <c:forEach items="${beanTipo_pers.consTodo()}" var="fila">
+                    <c:choose>
+                        <c:when test="{fila.codi_tipo_pers eq cmbTipo_pers}">
+                            <option name="codi_tipo_pers" value="${fila.codi_tipo_pers}" selected="">${fila.nomb_tipo_pers}</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option name="codi_tipo_pers" value="${fila.codi_tipo_pers}">${fila.nomb_tipo_pers}</option>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
+        </li>
+        <li>
+          <label>Genero:</label>
+        </li>
+        <li>
+            <select name="cmbGene">
+                <option value="1">Femenino</option>
+                <option value="2">Masculino</option>
+            </select>
+        </li>
+        <li>
+          <label>Fecha de nacimiento:</label>
+        </li>
+        <li>
+            <input type="date" name="txtfech_naci">
+        </li>
+        <li>
+          <label>DUI:</label>
+        </li>
+        <li>
+            <input type="text" name="txtdui_pers">
+        </li>
+        <li>
+          <label>NIT:</label>
+        </li>
+        <li>
+            <input type="text" name="txtnit_pers">
+        </li>
+        <li>
+          <label>Tipo de sangre:</label>
+        </li>
+        <li>
+            <input type="text" name="txttipo_sang">
+        </li>
+        <li>
+          <label>Direccion:</label>
+        </li>
+        <li>
+            <select name="cmbUbic_geog">
+                <jsp:useBean id="beanUbic_geog" class="com.sv.udb.controlador.Ubic_geogCtrl" scope="page"/>
+                <c:forEach items="${beanUbic_geog.consTodo()}" var="fila">
+                    <c:choose>
+                        <c:when test="{fila.codi_ubic_geof eq cmbTipo_pers}">
+                            <option name="codi_ubic_geof" value="${fila.codi_ubic_geof}" selected="">${fila.nomb_ubic_geof}</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option name="codi_ubic_geof" value="${fila.codi_ubic_geof}">${fila.nomb_ubic_geof}</option>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
+        </li>
+        <li>
+          <label>Fecha de ingreso:</label>
+        </li>
+        <li>
+            <input type="date" name="txtfech_alta">
+        </li>
+        <li>
+          <label>Fecha de baja:</label>
+        </li>
+        <li>
+            <input type="date" name="txtfech_baja">
         </li>
         <li>
           <!--<input type="submit" value="Generar" class="button" />-->
@@ -238,26 +312,6 @@ body {
                     </c:choose>
                 </c:forEach>
             </select>
-        </li>
-        <li>
-          <input type="submit" value="Generar" class="button" />
-        </li>
-      </ul>
-    </form>
-  </div>
-  <!--/#register.form-action-->
-  <div id="reset" class="form-action hide">
-    <h1>Reporte 3</h1>
-    <p>Permite ver las visitas realizadas a las unidades entre cierto periodo de tiempo</p>
-    <form id="reporte3" action="reporte3.jsp" method="post">
-      <ul>
-        <li>
-          <label>Fecha de inicio</label>
-          <input type="date" name="fechaInicio"/>
-        </li>
-        <li>
-          <label>Fecha de fin</label>
-          <input type="date" name="fechaFin"/>
         </li>
         <li>
           <input type="submit" value="Generar" class="button" />

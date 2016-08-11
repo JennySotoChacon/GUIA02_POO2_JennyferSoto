@@ -37,14 +37,28 @@ public class Pers_histCtrl {
             {
                     resp.add(new pers_hist(rs.getInt(1), 
                             //Inicio personas
-                            new Pers(rs.getInt(11), rs.getString(12), rs.getString(13), rs.getBlob(14), 
-                                    null, rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getString(19),
-                            new ubic_geof(rs.getInt(30), rs.getString(31), rs.getInt(32), rs.getString(33), rs.getString(34),
-                                    rs.getBlob(35)), rs.getString(20), rs.getString(21), rs.getInt(22)),
+                            new Pers(rs.getInt(11), 
+                                    rs.getString(12), 
+                                    rs.getString(13), 
+                                    rs.getBlob(14), 
+                                    null, rs.getString(15),
+                                    rs.getString(16),
+                                    rs.getString(17),
+                                    rs.getString(18),
+                                    rs.getString(19),
+                            new ubic_geof(rs.getInt(30),
+                                    rs.getString(31), 
+                                    rs.getInt(32), 
+                                    rs.getString(33),
+                                    rs.getString(34),
+                                    rs.getBlob(35)),
+                                    rs.getString(20),
+                                    rs.getString(21),
+                                    rs.getInt(22)),
                             //Fin personas, continuacion historial
                             rs.getString(3), rs.getString(4), rs.getBlob(5),
-                            new tipo_pers(rs.getInt(23), rs.getString(24), rs.getString(25), rs.getString(26), rs.getBlob(27)),
-                            new ubic_geof(rs.getInt(28), rs.getString(29), rs.getInt(30), rs.getString(31), rs.getString(32), rs.getBlob(33)),
+                            new tipo_pers(rs.getInt(25), rs.getString(26), rs.getString(27), rs.getString(28), rs.getBlob(29)),
+                            new ubic_geof(rs.getInt(30), rs.getString(31), rs.getInt(32), rs.getString(33), rs.getString(34), rs.getBlob(35)),
                                     rs.getString(7), rs.getString(8), rs.getInt(9)));
             }
         }
