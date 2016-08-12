@@ -14,6 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.sv.udb.controlador.PersCtrl;
 import com.sv.udb.modelo.Pers;
+import com.sv.udb.modelo.tipo_pers;
+import com.sv.udb.modelo.ubic_geof;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,19 +38,34 @@ public class PersonaServ extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
          boolean esValido = request.getMethod().equals("POST");
         if(esValido)
         {
             String CRUD = request.getParameter("CursBoton");
             if(CRUD.equals("Guardar"))
             {
+                //Convirtiendo la imagen a blob
+                String ruta = request.getParameter("txtfoto_pers");
+                Blob b = new javax.sql.rowset.serial.SerialBlob(ruta.getBytes());
                 String mens = "";
                 Pers obje_pers = new Pers();
                 obje_pers.setNomb_pers(request.getParameter("txtnomb_pers"));
                 obje_pers.setApel_pers(request.getParameter("txtapel_pers"));
+                obje_pers.setFoto_pers(b);
+                tipo_pers obje_tipo = new tipo_pers();
+                obje_tipo.setCodi_tipo_pers(Integer.parseInt(request.getParameter("cmbTipo_pers")));
+                obje_pers.setCodi_tipo_pers(obje_tipo);
+                obje_pers.setGene_pers(request.getParameter("cmbGene"));
+                obje_pers.setFech_naci_pers(request.getParameter("txtfech_naci"));
+                obje_pers.setDui_pers(request.getParameter("txtdui_pers"));
+                obje_pers.setNit_pers(request.getParameter("txtnit_pers"));
                 obje_pers.setTipo_sang_pers(request.getParameter("txttipo_sang"));
-                //mens = new PersCtrl().guar(obje_pers) ? "Datos guardados" : "Datos NO guardados";
+                ubic_geof obje_ubic = new ubic_geof();
+                obje_ubic.setCodi_ubic_geof(Integer.parseInt(request.getParameter("cmbUbic_geog")));
+                obje_pers.setCodi_ubic_geof(obje_ubic);
+                obje_pers.setFech_alta(request.getParameter("txtfech_alta"));
+                mens = new PersCtrl().guar(obje_pers) ? "Datos guardados" : "Datos NO guardados";
             }
         }
     }
@@ -61,7 +82,11 @@ public class PersonaServ extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonaServ.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -75,7 +100,11 @@ public class PersonaServ extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonaServ.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

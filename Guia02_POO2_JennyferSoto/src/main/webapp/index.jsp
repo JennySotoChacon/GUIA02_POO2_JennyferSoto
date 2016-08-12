@@ -224,8 +224,8 @@ body {
         </li>
         <li>
             <select name="cmbGene">
-                <option value="1">Femenino</option>
-                <option value="2">Masculino</option>
+                <option value="F">Femenino</option>
+                <option value="M">Masculino</option>
             </select>
         </li>
         <li>
@@ -277,12 +277,6 @@ body {
             <input type="date" name="txtfech_alta">
         </li>
         <li>
-          <label>Fecha de baja:</label>
-        </li>
-        <li>
-            <input type="date" name="txtfech_baja">
-        </li>
-        <li>
           <!--<input type="submit" value="Generar" class="button" />-->
           <input type="submit" name="button" id="SelectedUnidad" class="button">
         </li>
@@ -314,7 +308,7 @@ body {
             </select>
         </li>
         <li>
-          <input type="submit" value="Generar" class="button" />
+          <input type="submit" value="Guardar" class="button" name="CursBoton" />
         </li>
       </ul>
     </form>

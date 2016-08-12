@@ -59,4 +59,51 @@ public class PersCtrl {
         }
         return resp;
     }
+    
+    public boolean guar(Pers obje)
+    {
+        boolean resp = false;
+        Connection cn = new Conexion().getConn();
+        try
+        {
+            String consulta = "INSERT INTO pers VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, 1)";
+            PreparedStatement cmd = cn.prepareStatement(consulta);
+            cmd.setString(1, obje.getNomb_pers());
+            cmd.setString(2, obje.getApel_pers());
+            cmd.setInt(3, obje.getCodi_tipo_pers().getCodi_tipo_pers());
+            cmd.setBlob(4, obje.getFoto_pers());
+            cmd.setString(5, obje.getGene_pers());
+            cmd.setString(6, obje.getFech_naci_pers());
+            cmd.setString(7, obje.getDui_pers());
+            cmd.setString(8, obje.getNit_pers());
+            cmd.setString(9, obje.getTipo_sang_pers());
+            cmd.setInt(10, obje.getCodi_ubic_geof().getCodi_ubic_geof());
+            cmd.setString(11, obje.getFech_alta());
+            cmd.executeUpdate();
+            resp = true;
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            if(cn != null)
+            {
+                try
+                {
+                    if(!cn.isClosed())
+                    {
+                        cn.close();
+                    }
+                }
+                catch(SQLException ex)
+                {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return resp;
+    }
+    
 }
